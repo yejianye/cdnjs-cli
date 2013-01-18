@@ -7,6 +7,8 @@ This is a Javascript/CSS package mangament tool. It allows you to easily grab fr
 - bootstrap
 - google-code-prettify
 
+Inspired by `Fetch` plugin for Sublime Text and `Bower` from Twitter.
+
 Installation
 -------------
 

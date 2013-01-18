@@ -85,5 +85,8 @@ def cdn_snippet(args):
     pkg = packages[args.package]()
     pkg.snippet() 
 
-if __name__ == '__main__':
+def main():
     dispatch_commands([list_packages, install_package, cdn_snippet])
+
+if __name__ == '__main__':
+    main()
