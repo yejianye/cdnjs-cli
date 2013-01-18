@@ -30,7 +30,7 @@ For example, in your website, you create a `static/lib` directory to store all t
 
 `fetchr` will display the source url where it fetches jquery.js and put it under `static/lib/js/jquery.js`. If you'd like to install a minified version, you should do
 
-    $ fetchr install jquery.min
+    $ fetchr install -m jquery
 
 To list all supported packages
 

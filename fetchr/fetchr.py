@@ -66,7 +66,7 @@ def list_packages():
     print '\n'.join(packages.keys())
 
 @named('install')
-@arg('--min', '-m', default=False, help='Fetch production/minified version.')
+@arg('--min', '-m', default=False, help='Generate production/minified version.')
 @arg('package', help='Package name')
 def install_package(args):
     """ install package """
