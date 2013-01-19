@@ -10,16 +10,29 @@ def check_package(package):
         print "Unknown package:", package
         sys.exit(1)
 
+def filter_packages(cond):
+    base.discover_packages()
+    packages = base.list_packages()
+    return [
+        '%s - %s' % (name, desc) if desc else name
+        for name, desc in sorted(packages.iteritems()) 
+        if cond(name, desc)
+    ]
+
 @named('list')
 def list_packages():
     """ list all packages """
-    base.discover_packages()
-    packages = base.list_packages()
-    for name, desc in sorted(packages.iteritems()):
-        if desc:
-            print '%s - %s' % (name, desc)
-        else:
-            print name
+    print '\n'.join(filter_packages(lambda name, desc:True))
+
+@named('search')
+@arg('keyword', help='Keyword to search the package')
+def search_packages(args):
+    """ search packages via a keyword """
+    result = filter_packages(lambda name, desc: (args.keyword in name))
+    if not result:
+        print 'Packages not found.'
+    else:
+        print '\n'.join(result)
 
 @named('install')
 @arg('--min', '-m', default=False, help='Generate production/minified version.')
@@ -45,7 +58,7 @@ def cdn_snippet(args):
         print "Sorry, there's no CDN hosting the library."
 
 def main():
-    dispatch_commands([list_packages, install_package, cdn_snippet])
+    dispatch_commands([list_packages, search_packages, install_package, cdn_snippet])
 
 if __name__ == '__main__':
     main()

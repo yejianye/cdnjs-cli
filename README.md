@@ -2,13 +2,14 @@ Fetchr
 ===============
 
 This is a Javascript/CSS package mangament tool. It allows you to easily grab frequently-used Javascript/CSS libraries to your project. It current supports the following libraries
+- amplify
+- backbone
+- bootstrap
 - jquery
 - jquery-ui
-- bootstrap
+- modernizr
+- prettify
 - underscore
-- backbone
-- google-code-prettify
-- amplify
 
 Inspired by `Fetch` plugin for Sublime Text and `Bower` from Twitter.
 
@@ -39,7 +40,11 @@ To list all supported packages
 
     $ fetchr list
 
-Contribute
+To search a package
+
+    $ fetchr search keyword
+
+Add new packages
 ---------------
 
 Add support to a new package for `Fetchr` is easy. Just add a new file under fetchr/packages. In most cases, you could subclass `SimplePackage` and set the following properties
