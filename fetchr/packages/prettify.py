@@ -2,7 +2,7 @@ from fetchr.packages.base import package, SimplePackage
 
 @package
 class Prettify(SimplePackage):
-    """Google Code Prettify"""
+    """Syntax highlighter from Google"""
     @property
     def dev_urls(self):
         return [

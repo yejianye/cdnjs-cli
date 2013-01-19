@@ -2,6 +2,7 @@ from fetchr.packages.base import package, SimplePackage
 
 @package
 class Underscore(SimplePackage):
+    """Utility-belt library that provides a lot of functional programming support."""
     version = '1.4.3'
     @property
     def cdn_urls(self):
@@ -17,6 +18,7 @@ class Underscore(SimplePackage):
 
 @package
 class Backbone(SimplePackage):
+    """Micro-framework gives structure to web applications by providing model/collection/view.""" 
     version = '0.9.10'
     deps = ['underscore']
     @property

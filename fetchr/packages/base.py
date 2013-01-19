@@ -31,7 +31,7 @@ class SimplePackage(object):
 
     @property
     def min_urls(self):
-        return []
+        return self.cdn_urls
 
     @resolve_deps
     def snippet(self):
@@ -54,9 +54,7 @@ class SimplePackage(object):
 
     @resolve_deps
     def minified(self):
-        if self.cdn_urls:
-            self.get(self.cdn_urls, self.download_one)
-        elif self.min_urls:
+        if self.min_urls:
             self.get(self.min_urls, self.download_one)
         else:
             self.get(self.dev_urls, self.minify_one)

@@ -2,6 +2,7 @@ from fetchr.packages.base import package, SimplePackage
 
 @package
 class JQuery(SimplePackage):
+    """JQuery"""
     version = '1.9.0'
 
     @property
@@ -14,6 +15,7 @@ class JQuery(SimplePackage):
 
 @package
 class JQuery_UI(SimplePackage):
+    """JQuery UI"""
     version = '1.9.2'
     deps = ['jquery']
 

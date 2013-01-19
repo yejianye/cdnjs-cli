@@ -5,7 +5,10 @@ This is a Javascript/CSS package mangament tool. It allows you to easily grab fr
 - jquery
 - jquery-ui
 - bootstrap
+- underscore
+- backbone
 - google-code-prettify
+- amplify
 
 Inspired by `Fetch` plugin for Sublime Text and `Bower` from Twitter.
 
@@ -35,3 +38,16 @@ For example, in your website, you create a `static/lib` directory to store all t
 To list all supported packages
 
     $ fetchr list
+
+Contribute
+---------------
+
+Add support to a new package for `Fetchr` is easy. Just add a new file under fetchr/packages. In most cases, you could subclass `SimplePackage` and set the following properties
+
+- `version`: Library's version
+- `dev_urls`: Urls for development version of the library
+- `min_urls`: Urls for minified version of the library
+- `cdn_urls`: Urls for CDN hosting the library
+
+It's not required to set all of them and `Fetchr` is smart enough to derive the rest from what you've set. For example, if only `dev_urls` is set, when users request a minified version, `Fetchr` will download the development and generate minified Javascript/CSS files of the library. If only `cdn_urls` is set, `min_urls` will default to `cdn_urls` and when development version is requested, it will show a warning and download the minified version instead.
+

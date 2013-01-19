@@ -2,6 +2,7 @@ from fetchr.packages.base import package, SimplePackage
 
 @package
 class Bootstrap(SimplePackage):
+    """Sleek, intuitive, and powerful front-end framework from Twitter."""
     version = '2.2.2'
 
     @property

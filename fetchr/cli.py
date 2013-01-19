@@ -15,7 +15,7 @@ def list_packages():
     """ list all packages """
     base.discover_packages()
     packages = base.list_packages()
-    for name, desc in packages.iteritems():
+    for name, desc in sorted(packages.iteritems()):
         if desc:
             print '%s - %s' % (name, desc)
         else:

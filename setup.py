@@ -30,5 +30,5 @@ setuptools.setup(
         ]
     },
     install_requires=['sh', 'slimit', 'cssmin', 'requests', 'argh'],
-    packages=['fetchr'],
+    packages=['fetchr', 'fetchr.packages'],
 )
