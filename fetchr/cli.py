@@ -14,7 +14,12 @@ def check_package(package):
 def list_packages():
     """ list all packages """
     base.discover_packages()
-    print '\n'.join(base.list_packages())
+    packages = base.list_packages()
+    for name, desc in packages.iteritems():
+        if desc:
+            print '%s - %s' % (name, desc)
+        else:
+            print name
 
 @named('install')
 @arg('--min', '-m', default=False, help='Generate production/minified version.')
@@ -34,7 +39,10 @@ def cdn_snippet(args):
     """ show embedded html snippets for using package via CDN """
     check_package(args.package)
     pkg = base.get_instance(args.package)
-    pkg.snippet() 
+    try:
+        pkg.snippet() 
+    except NotImplementedError:
+        print "Sorry, there's no CDN hosting the library."
 
 def main():
     dispatch_commands([list_packages, install_package, cdn_snippet])

@@ -26,9 +26,9 @@ setuptools.setup(
         ],
     entry_points={
         'console_scripts': [
-            'fetchr = fetchr.fetchr:main',
+            'fetchr = fetchr.cli:main',
         ]
     },
-    install_requires=['slimit', 'argh'],
+    install_requires=['sh', 'slimit', 'cssmin', 'requests', 'argh'],
     packages=['fetchr'],
 )

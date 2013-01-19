@@ -4,6 +4,9 @@ import sh
 import slimit
 import cssmin
 
+minify_js = slimit.minify
+minify_css = cssmin.cssmin
+
 def download(url, filename, content_processor=lambda x:x):
     filedir = os.path.dirname(filename)
     sh.mkdir('-p', filedir)
@@ -16,12 +19,6 @@ def download(url, filename, content_processor=lambda x:x):
     else:
         print 'Error: %s' % resp.status_code
     return resp.ok
-
-def minify_js(content):
-    return slimit.minify
-
-def minify_css(content):
-    return cssmin.cssmin
 
 def minify_file(input_filename, output_filename, minify_func):
     minified_text = minify_func(open(input_filename).read())

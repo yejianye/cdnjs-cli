@@ -29,9 +29,14 @@ class SimplePackage(object):
     def dev_urls(self):
         return []
 
+    @property
+    def min_urls(self):
+        return []
+
     @resolve_deps
     def snippet(self):
-        lines = []
+        if not self.cdn_urls:
+            raise NotImplementedError
         for url in self.cdn_urls:
             url = self.version_url(url)
             if url.endswith('.js'):
@@ -41,12 +46,18 @@ class SimplePackage(object):
 
     @resolve_deps
     def dev(self):
-        self.get(self.dev_urls, self.download_one)
+        if self.dev_urls:
+            self.get(self.dev_urls, self.download_one)
+        elif self.cdn_urls:
+            print "WARNING: Development version not found, will download minified version instead."
+            self.get(self.cdn_urls, self.download_one)
 
     @resolve_deps
     def minified(self):
         if self.cdn_urls:
             self.get(self.cdn_urls, self.download_one)
+        elif self.min_urls:
+            self.get(self.min_urls, self.download_one)
         else:
             self.get(self.dev_urls, self.minify_one)
 
@@ -55,7 +66,9 @@ class SimplePackage(object):
 
     def get(self, urls, one_func):
         for url in urls:
-            url = 'http:' + self.version_url(url)
+            url = self.version_url(url)
+            if url.startswith('//'):
+                url = 'http:' + url
             filename = url.rsplit('/', 1)[-1]
             one_func(url, filename)
     
@@ -77,7 +90,7 @@ def has_package(package):
     return package in _packages.keys()
 
 def list_packages():
-    return _packages.keys()
+    return dict((name, cls.__doc__) for name, cls in _packages.iteritems())
 
 def get_instance(name):
     return _packages[name]()
