@@ -1,15 +1,15 @@
 import setuptools, sys
 
 setuptools.setup(
-    name="fetchr",
+    name="cdnjs",
     version='0.1.0',
     license="MIT",
 
     author="Ryan Ye",
     author_email="yejianye@gmail.com",
-    url="https://github.com/yejianye/fetchr",
+    url="https://github.com/yejianye/cdnjs-cli",
 
-    description="A tool for downloading frequently-used Javascript/CSS libraries.",
+    description="A Command line interface to search/install Javascript/CSS libraries from cdnjs.com",
     long_description=open("README.md").read(),
     keywords=[],
     classifiers=[
@@ -26,9 +26,9 @@ setuptools.setup(
         ],
     entry_points={
         'console_scripts': [
-            'fetchr = fetchr.cli:main',
+            'cdnjs = cdnjs.cli:main',
         ]
     },
-    install_requires=['sh', 'slimit', 'cssmin', 'requests', 'argh'],
-    packages=['fetchr', 'fetchr.packages'],
+    install_requires=['requests', 'argh'],
+    packages=['cdnjs'],
 )

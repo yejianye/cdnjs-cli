@@ -1,14 +1,13 @@
 TODO:
+- Versions
+
+Completed:
+- Module Discovery 
 - Packages:
+    * jquery 
+    * jquery-ui 
     * google-code-prettify
     * bootstrap
     * backbone
     * underscore
-- Versions
-
-Completed:
-- Module Discovery @done
-- Packages:
-    * jquery @done
-    * jquery-ui @done
-- Dependency management @done
+- Dependency management 
