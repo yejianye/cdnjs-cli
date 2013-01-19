@@ -1,13 +1,7 @@
 TODO:
-- Versions
-
-Completed:
-- Module Discovery 
-- Packages:
-    * jquery 
-    * jquery-ui 
-    * google-code-prettify
-    * bootstrap
-    * backbone
-    * underscore
+=======================
 - Dependency management 
+
+Dependency managament
+----------------------
+There's usually no dependencies between Javascript libraries. When they do, look for package.json to find the git repo of libraries, and then look for components.js in the library repo to get dependent libraries. 
