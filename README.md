@@ -31,5 +31,5 @@ To list all supported libraries
 
 To search a library
 
-    $ fetchr search keyword
+    $ cdnjs search keyword
 
